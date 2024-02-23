@@ -48,7 +48,6 @@ resource "azurerm_cosmosdb_account" "db" {
     location          = "eastus"
     failover_priority = 0
   }
-  tags = {
     yor_name             = "db"
     yor_trace            = "a945caab-bf5e-4d3d-9431-774da2e33a55"
     git_commit           = "11b0303b13530745be44d05bf48019b6960ee216"
@@ -59,7 +58,12 @@ resource "azurerm_cosmosdb_account" "db" {
     git_org              = "danpaloalto"
     git_repo             = "AzureGoat"
   }
+  enable_automatic_failover = false
+  enable_free_tier = false
+  enable_multiple_write_locations = false
+  is_virtual_network_filter_enabled = false
 }
+
 
 resource "null_resource" "file_populate_data" {
   provisioner "local-exec" {
